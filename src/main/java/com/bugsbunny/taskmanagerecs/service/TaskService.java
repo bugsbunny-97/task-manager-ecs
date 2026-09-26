@@ -42,4 +42,11 @@ public class TaskService {
                 .map(TaskMapper::mapTaskToResponseDto)
                 .collect(Collectors.toList());
     }
+
+    public void deleteTaskById(Long taskId) {
+        if (!taskRepository.existsById(taskId)) {
+            throw new TaskNotFoundException("Task not found with id: " + taskId);
+        }
+        taskRepository.deleteById(taskId);
+    }
 }

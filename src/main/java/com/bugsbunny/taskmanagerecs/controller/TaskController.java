@@ -35,4 +35,10 @@ public class TaskController {
         List<TaskResponseDto> responseDtos = taskService.getAllTasksByStatus(status);
         return ResponseEntity.ok(responseDtos);
     }
+
+    @DeleteMapping("/{taskId}")
+    public ResponseEntity<Void> deleteTaskById(@PathVariable Long taskId) {
+        taskService.deleteTaskById(taskId);
+        return ResponseEntity.noContent().build();
+    }
 }
