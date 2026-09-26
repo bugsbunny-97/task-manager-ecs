@@ -4,7 +4,7 @@ import com.bugsbunny.taskmanagerecs.dto.TaskRequestDto;
 import com.bugsbunny.taskmanagerecs.dto.TaskResponseDto;
 import com.bugsbunny.taskmanagerecs.service.TaskService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +18,7 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<TaskResponseDto> createTask(TaskRequestDto taskRequestDto) {
         TaskResponseDto responseDto = taskService.createTask(taskRequestDto);
         return ResponseEntity.ok(responseDto);
