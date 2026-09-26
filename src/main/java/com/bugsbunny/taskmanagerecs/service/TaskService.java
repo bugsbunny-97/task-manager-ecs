@@ -3,6 +3,7 @@ package com.bugsbunny.taskmanagerecs.service;
 import com.bugsbunny.taskmanagerecs.dto.TaskRequestDto;
 import com.bugsbunny.taskmanagerecs.dto.TaskResponseDto;
 import com.bugsbunny.taskmanagerecs.entity.Task;
+import com.bugsbunny.taskmanagerecs.exception.TaskNotFoundException;
 import com.bugsbunny.taskmanagerecs.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class TaskService {
 
     public TaskResponseDto getTaskById(Long taskId) {
         Task task = taskRepository.findById(taskId)
-                .orElseThrow(() -> new RuntimeException("Task not found with id: " + taskId));
+                .orElseThrow(() -> new TaskNotFoundException("Task not found with id: " + taskId));
         return mapTaskToResponseDto(task);
     }
 }
