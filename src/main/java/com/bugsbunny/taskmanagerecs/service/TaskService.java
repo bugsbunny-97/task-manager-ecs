@@ -20,7 +20,6 @@ public class TaskService {
 
     public TaskResponseDto createTask(TaskRequestDto taskRequestDto) {
         Task task = mapTaskRequestDtoToTask(taskRequestDto);
-        taskRepository.save(task);
-        return mapTaskToResponseDto(task);
+        return mapTaskToResponseDto(taskRepository.save(task));
     }
 }
