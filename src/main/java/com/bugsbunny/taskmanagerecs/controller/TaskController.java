@@ -6,6 +6,8 @@ import com.bugsbunny.taskmanagerecs.service.TaskService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/task")
 public class TaskController {
@@ -26,5 +28,11 @@ public class TaskController {
     public ResponseEntity<TaskResponseDto> getTaskById(@PathVariable Long taskId) {
         TaskResponseDto responseDto = taskService.getTaskById(taskId);
         return ResponseEntity.ok(responseDto);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TaskResponseDto>> getAllTasksByStatus(@RequestParam String status) {
+        List<TaskResponseDto> responseDtos = taskService.getAllTasksByStatus(status);
+        return ResponseEntity.ok(responseDtos);
     }
 }
