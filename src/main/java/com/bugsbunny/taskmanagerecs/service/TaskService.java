@@ -22,4 +22,10 @@ public class TaskService {
         Task task = mapTaskRequestDtoToTask(taskRequestDto);
         return mapTaskToResponseDto(taskRepository.save(task));
     }
+
+    public TaskResponseDto getTaskById(Long taskId) {
+        Task task = taskRepository.findById(taskId)
+                .orElseThrow(() -> new RuntimeException("Task not found with id: " + taskId));
+        return mapTaskToResponseDto(task);
+    }
 }
