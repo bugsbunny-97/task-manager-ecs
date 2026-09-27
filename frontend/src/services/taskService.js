@@ -1,7 +1,7 @@
-const API_BASE_URL = "/api";
+const API_BASE_URL = "/api/tasks";
 
 export const getTasks = async () => {
-    const response = await fetch(`${API_BASE_URL}/task`);
+    const response = await fetch(`${API_BASE_URL}`);
 
     if (!response.ok) {
         throw new Error("Failed to fetch tasks");
@@ -11,7 +11,7 @@ export const getTasks = async () => {
 };
 
 export const createTask = async (task) => {
-    const response = await fetch(`${API_BASE_URL}/task`, {
+    const response = await fetch(`${API_BASE_URL}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -27,7 +27,7 @@ export const createTask = async (task) => {
 };
 
 export const getTaskById = async (id) => {
-    const response = await fetch(`${API_BASE_URL}/task/${id}`);
+    const response = await fetch(`${API_BASE_URL}/${id}`);
 
     if (!response.ok) {
         throw new Error("Task not found");
